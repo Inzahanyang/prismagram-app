@@ -10,4 +10,4 @@ Screens:
 - [ ] Edit Profile
 - [ ] Photo Detail
 - [ ] Photo Comments
-- [ ] Photo Likes
+- [ ] Photo Likess
