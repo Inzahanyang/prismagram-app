@@ -2,15 +2,15 @@ import "react-native-gesture-handler";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
-import Profile from "../screens/Profile";
-import Notifications from "../screens/Notifications";
-import Search from "../screens/Search";
+import Home from "../screens/Tabs/Home";
+import Profile from "../screens/Tabs/Profile";
+import Notifications from "../screens/Tabs/Notifications";
+import Search from "../screens/Tabs/Search";
 import { View } from "react-native";
 
 const TabNavigation = createBottomTabNavigator();
 
-const MyStack = () => {
+const Tab = () => {
   return (
     <TabNavigation.Navigator>
       <TabNavigation.Screen name="Home" component={Home} />
@@ -18,12 +18,13 @@ const MyStack = () => {
       <TabNavigation.Screen
         name="Add"
         component={View}
-        listeners={{
+        listeners={({ navigation }) => ({
           tabPress: (e) => {
+            console.log(navigation);
             e.preventDefault();
-            console.log("add");
+            navigation.push("PhotoNavigation");
           },
-        }}
+        })}
       />
       <TabNavigation.Screen name="Notifications" component={Notifications} />
       <TabNavigation.Screen name="Search" component={Search} />
@@ -32,9 +33,5 @@ const MyStack = () => {
 };
 
 export default () => {
-  return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
-  );
+  return <Tab />;
 };
